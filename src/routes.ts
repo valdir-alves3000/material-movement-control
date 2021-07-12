@@ -4,6 +4,7 @@ import { ensureAuthenticate } from './middlewares/ensureAuthenticate';
 
 import {
   ListUserController,
+  UpdateUserController,
   CreateUsersController,
   AuthenticateUserController,
 } from './controllers/users';
@@ -11,14 +12,20 @@ import {
 const routes = Router();
 
 const listUserController = new ListUserController();
+const updateUserController = new UpdateUserController();
 const createUsersController = new CreateUsersController();
 const authenticateUserController = new AuthenticateUserController();
 
 routes.get(
   '/users',
   ensureAuthenticate,
-  ensureAdmin,
   listUserController.handle);
+
+routes.put(
+  '/users/:id',
+  ensureAuthenticate,
+  ensureAdmin,
+  updateUserController.handle);
 
 routes.post(
   '/users',
