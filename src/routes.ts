@@ -6,6 +6,7 @@ import {
   ListUserController,
   UpdateUserController,
   CreateUsersController,
+  DeleteUsersController,
   AuthenticateUserController,
 } from './controllers/users';
 
@@ -14,6 +15,7 @@ const routes = Router();
 const listUserController = new ListUserController();
 const updateUserController = new UpdateUserController();
 const createUsersController = new CreateUsersController();
+const deleteUsersController = new DeleteUsersController();
 const authenticateUserController = new AuthenticateUserController();
 
 routes.get(
@@ -21,17 +23,23 @@ routes.get(
   ensureAuthenticate,
   listUserController.handle);
 
+routes.post(
+  '/users',
+  ensureAuthenticate,
+  ensureAdmin,
+  createUsersController.handle);
+
 routes.put(
   '/users/:id',
   ensureAuthenticate,
   ensureAdmin,
   updateUserController.handle);
 
-routes.post(
-  '/users',
+routes.delete(
+  '/users/:id',
   ensureAuthenticate,
   ensureAdmin,
-  createUsersController.handle);
+  deleteUsersController.handle);
 
 routes.post('/login', authenticateUserController.handle);
 
