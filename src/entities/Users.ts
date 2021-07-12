@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import { v4 as uuid } from 'uuid';
 
 import {
@@ -16,12 +17,15 @@ class Users {
   @Column()
   name: string;
 
+  @Exclude()
   @Column()
   password: string;
 
+  @Exclude()
   @Column()
   admin: boolean;
 
+  @Exclude()
   @CreateDateColumn()
   created_at: Date;
 
