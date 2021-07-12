@@ -10,6 +10,10 @@ import {
   AuthenticateUserController,
 } from './controllers/users';
 
+import {
+  CreateProductsController
+} from './controllers/products';
+
 const routes = Router();
 
 const listUserController = new ListUserController();
@@ -17,6 +21,8 @@ const updateUserController = new UpdateUserController();
 const createUsersController = new CreateUsersController();
 const deleteUsersController = new DeleteUsersController();
 const authenticateUserController = new AuthenticateUserController();
+
+const createProductsController = new CreateProductsController();
 
 routes.get(
   '/users',
@@ -40,6 +46,12 @@ routes.delete(
   ensureAuthenticate,
   ensureAdmin,
   deleteUsersController.handle);
+
+routes.post(
+  '/products',
+  ensureAuthenticate,
+  ensureAdmin,
+  createProductsController.handle);
 
 routes.post('/login', authenticateUserController.handle);
 
