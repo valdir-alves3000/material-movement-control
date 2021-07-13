@@ -11,7 +11,10 @@ import {
 } from './controllers/users';
 
 import {
-  CreateProductsController
+  ListProductsController,
+  UpdateProductsController,
+  CreateProductsController,
+  DeleteProductsController,
 } from './controllers/products';
 
 const routes = Router();
@@ -22,7 +25,10 @@ const createUsersController = new CreateUsersController();
 const deleteUsersController = new DeleteUsersController();
 const authenticateUserController = new AuthenticateUserController();
 
+const listProductsController = new ListProductsController();
+const updateProductsController = new UpdateProductsController();
 const createProductsController = new CreateProductsController();
+const deleteProductsController = new DeleteProductsController();
 
 routes.get(
   '/users',
@@ -52,6 +58,27 @@ routes.post(
   ensureAuthenticate,
   ensureAdmin,
   createProductsController.handle);
+
+routes.get(
+  '/products',
+  ensureAuthenticate,
+  listProductsController.handle);
+
+routes.post(
+  '/products',
+  ensureAuthenticate,
+  ensureAdmin,
+  createProductsController.handle);
+
+routes.put(
+  '/products/:id',
+  ensureAuthenticate,
+  updateProductsController.handle);
+
+routes.delete(
+  '/products/:id',
+  ensureAuthenticate,
+  deleteProductsController.handle);
 
 routes.post('/login', authenticateUserController.handle);
 
