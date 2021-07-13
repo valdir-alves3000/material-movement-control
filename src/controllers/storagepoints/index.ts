@@ -1,0 +1,1 @@
+export { CreateStoragePointsController } from './CreateStoragePointsController';
