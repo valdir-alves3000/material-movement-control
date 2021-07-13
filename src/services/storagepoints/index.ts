@@ -1,0 +1,1 @@
+export { CreateStoragePointsService } from './CreateStoragePointsService';
