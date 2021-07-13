@@ -21,6 +21,11 @@ export class CreateStoragePoints1626209917959 implements MigrationInterface {
                         type: 'boolean'
                     },
                     {
+                        name: 'lock_description',
+                        type: 'varchar',
+                        isNullable: true
+                    },
+                    {
                         name: 'product_id',
                         type: 'uuid'
                     },
