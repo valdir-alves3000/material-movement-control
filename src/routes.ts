@@ -3,7 +3,7 @@ import { ensureAdmin } from './middlewares/ensureAdmin';
 import { ensureAuthenticate } from './middlewares/ensureAuthenticate';
 
 import {
-  ListUserController,
+  ListUsersController,
   UpdateUserController,
   CreateUsersController,
   DeleteUsersController,
@@ -16,7 +16,7 @@ import {
 
 const routes = Router();
 
-const listUserController = new ListUserController();
+const listUsersController = new ListUsersController();
 const updateUserController = new UpdateUserController();
 const createUsersController = new CreateUsersController();
 const deleteUsersController = new DeleteUsersController();
@@ -27,7 +27,7 @@ const createProductsController = new CreateProductsController();
 routes.get(
   '/users',
   ensureAuthenticate,
-  listUserController.handle);
+  listUsersController.handle);
 
 routes.post(
   '/users',
