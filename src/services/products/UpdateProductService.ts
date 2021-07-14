@@ -2,7 +2,7 @@ import { getCustomRepository } from 'typeorm';
 import { ProductsRepository } from '../../repositories';
 import { UsersRepository } from '../../repositories';
 
-import { Products } from '../../entities';
+import { Products } from '../../entities/Products';
 
 interface IUserRequest {
   id: string;
@@ -31,11 +31,11 @@ class UpdateProductService {
 
     const productAlreadyExists = await productsRepository.findOne(id);
     const { admin } = await usersRepository.findOne(user_id);
-
+    
     if (!productAlreadyExists) {
       throw new Error('Product not found!');
     }
-
+    
     if (!admin) {
       await productsRepository
         .createQueryBuilder()
@@ -52,7 +52,7 @@ class UpdateProductService {
       return;
     }
 
-    await productsRepository
+    const result = await productsRepository
       .createQueryBuilder()
       .update(Products)
       .set({
@@ -66,6 +66,8 @@ class UpdateProductService {
       })
       .where('id = :id', { id })
       .execute();
+
+    return result;
   }
 }
 

@@ -6,10 +6,14 @@ class ListProductsService {
     const productsRepository = getCustomRepository(ProductsRepository);
 
     if (id) {
-      const product = await productsRepository.findOne(
-        id,
-        { relations: ['updatedByUser'] }
-      );
+      const product = await productsRepository.findOne({
+        where: {
+          locked: false,
+          material: id,
+          status: 'in stock'
+        },
+        relations: ['updatedByUser']
+      });
 
       if (!product) {
         throw new Error('Product not Found')
