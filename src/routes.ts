@@ -17,6 +17,13 @@ import {
   DeleteProductsController,
 } from './controllers/products';
 
+import {
+  ListStoragePointsController,
+  UpdateStoragePointsController,
+  CreateStoragePointsController,
+  DeleteStoragePointsController,
+} from './controllers/storagepoints';
+
 const routes = Router();
 
 const listUsersController = new ListUsersController();
@@ -30,56 +37,97 @@ const updateProductsController = new UpdateProductsController();
 const createProductsController = new CreateProductsController();
 const deleteProductsController = new DeleteProductsController();
 
-routes.get(
-  '/users',
-  ensureAuthenticate,
-  listUsersController.handle);
-
-routes.post(
-  '/users',
-  ensureAuthenticate,
-  ensureAdmin,
-  createUsersController.handle);
-
-routes.put(
-  '/users/:id',
-  ensureAuthenticate,
-  ensureAdmin,
-  updateUserController.handle);
-
-routes.delete(
-  '/users/:id',
-  ensureAuthenticate,
-  ensureAdmin,
-  deleteUsersController.handle);
-
-routes.post(
-  '/products',
-  ensureAuthenticate,
-  ensureAdmin,
-  createProductsController.handle);
-
-routes.get(
-  '/products',
-  ensureAuthenticate,
-  listProductsController.handle);
-
-routes.post(
-  '/products',
-  ensureAuthenticate,
-  ensureAdmin,
-  createProductsController.handle);
-
-routes.put(
-  '/products/:id',
-  ensureAuthenticate,
-  updateProductsController.handle);
-
-routes.delete(
-  '/products/:id',
-  ensureAuthenticate,
-  deleteProductsController.handle);
+const listStoragePointsController = new ListStoragePointsController();
+const updateStoragePointsController = new UpdateStoragePointsController();
+const createStoragePointsController = new CreateStoragePointsController();
+const deleteStoragePointsController = new DeleteStoragePointsController();
 
 routes.post('/login', authenticateUserController.handle);
+
+routes.get(
+  '/users',
+  ensureAuthenticate,
+  listUsersController.handle
+);
+
+routes.post(
+  '/users',
+  ensureAuthenticate,
+  ensureAdmin,
+  createUsersController.handle
+);
+
+routes.put(
+  '/users/:id',
+  ensureAuthenticate,
+  ensureAdmin,
+  updateUserController.handle
+);
+
+routes.delete(
+  '/users/:id',
+  ensureAuthenticate,
+  ensureAdmin,
+  deleteUsersController.handle
+);
+
+routes.post(
+  '/products',
+  ensureAuthenticate,
+  ensureAdmin,
+  createProductsController.handle
+);
+
+routes.get(
+  '/products',
+  ensureAuthenticate,
+  listProductsController.handle
+);
+
+routes.post(
+  '/products',
+  ensureAuthenticate,
+  createProductsController.handle
+);
+
+routes.put(
+  '/products/:id',
+  ensureAuthenticate,
+  updateProductsController.handle
+);
+
+routes.delete(
+  '/products/:id',
+  ensureAuthenticate,
+  ensureAdmin,
+  deleteProductsController.handle
+);
+
+routes.get(
+  '/storage-points',
+  ensureAuthenticate,
+  listStoragePointsController.handle
+);
+
+routes.post(
+  '/storage-points',
+  ensureAuthenticate,
+  ensureAdmin,
+  createStoragePointsController.handle
+);
+
+routes.put(
+  '/storage-points/:id',
+  ensureAuthenticate,
+  ensureAdmin,
+  updateStoragePointsController.handle
+);
+
+routes.delete(
+  '/storage-points/:id',
+  ensureAuthenticate,
+  ensureAdmin,
+  deleteStoragePointsController.handle
+);
 
 export { routes };
