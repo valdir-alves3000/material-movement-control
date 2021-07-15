@@ -23,8 +23,8 @@ class UpdateSupplyPointsService {
       .createQueryBuilder()
       .update(SupplyPoints)
       .set({
-        supply_point,
-        product_id
+        supply_point: supply_point || supplyPointAlreadyExists.supply_point,
+        product_id: product_id || supplyPointAlreadyExists.product_id
       })
       .where('id = :id',{
         id

@@ -67,11 +67,11 @@ NodeJs 🚧 em desenvolvimento 🚧
 
 <h3 id="features"> Features </h3>
 
-- [x] User registration
-- [ ] User authentication
+- [x] User Registration
+- [x] User Authentication
 
-- [ ] Products registration
-- [ ] Creation of storage points
+- [x] Products Registration
+- [x] Creation of Storage Points
 
 <h3 id="autor"> Autor </h3>
 

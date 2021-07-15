@@ -163,7 +163,7 @@ routes.put(
 );
 
 routes.delete(
-  '/supply-points',
+  '/supply-points/:id',
   ensureAuthenticate,
   ensureAdmin,
   deleteSupplyPointsController.handle
