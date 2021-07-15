@@ -27,7 +27,8 @@ export class CreateStoragePoints1626209917959 implements MigrationInterface {
                     },
                     {
                         name: 'product_id',
-                        type: 'uuid'
+                        type: 'uuid',
+                        isNullable: true
                     },
                     {
                         name: 'created_at',
