@@ -24,6 +24,13 @@ import {
   DeleteStoragePointsController,
 } from './controllers/storagepoints';
 
+import {
+  ListSupplyPointsController,
+  UpdateSupplyPointsController,
+  CreateSupplyPointsController,
+  DeleteSupplyPointsController,
+} from './controllers/supplypoints';
+
 const routes = Router();
 
 const listUsersController = new ListUsersController();
@@ -41,6 +48,11 @@ const listStoragePointsController = new ListStoragePointsController();
 const updateStoragePointsController = new UpdateStoragePointsController();
 const createStoragePointsController = new CreateStoragePointsController();
 const deleteStoragePointsController = new DeleteStoragePointsController();
+
+const listSupplyPointsController = new ListSupplyPointsController();
+const updateSupplyPointsController = new UpdateSupplyPointsController();
+const createSupplyPointsController = new CreateSupplyPointsController();
+const deleteSupplyPointsController = new DeleteSupplyPointsController();
 
 routes.post('/login', authenticateUserController.handle);
 
@@ -128,6 +140,33 @@ routes.delete(
   ensureAuthenticate,
   ensureAdmin,
   deleteStoragePointsController.handle
+);
+
+routes.get(
+  '/supply-points',
+  ensureAuthenticate,
+  listSupplyPointsController.handle
+);
+
+routes.post(
+  '/supply-points',
+  ensureAuthenticate,
+  ensureAdmin,
+  createSupplyPointsController.handle
+);
+
+routes.put(
+  '/supply-points/:id',
+  ensureAuthenticate,
+  ensureAdmin,
+  updateSupplyPointsController.handle
+);
+
+routes.delete(
+  '/supply-points',
+  ensureAuthenticate,
+  ensureAdmin,
+  deleteSupplyPointsController.handle
 );
 
 export { routes };
