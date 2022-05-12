@@ -4,9 +4,9 @@ module.exports = {
 
   // for local testing change the 'dist' folder to 'src' and the 'js' extension for 'ts'
   
-  migrations: [`dist/database/migrations/*.js`],
+  migrations: [`src/database/migrations/*.ts`],
 
-  entities: [`dist/entities/*.js`],
+  entities: [`src/entities/*.ts`],
   
   cli: {
     migrationsDir: 'src/database/migrations'

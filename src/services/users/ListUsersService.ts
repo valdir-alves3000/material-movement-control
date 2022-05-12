@@ -1,6 +1,6 @@
-import { getCustomRepository } from 'typeorm';
-import { UsersRepository } from '../../repositories';
-import { classToPlain } from 'class-transformer';
+import { classToPlain } from "class-transformer";
+import { getCustomRepository } from "typeorm";
+import { UsersRepository } from "../../repositories";
 
 interface IDataRequest {
   id: string;
@@ -16,7 +16,7 @@ class ListUsersService {
       const user = await usersRepository.findOne(id);
 
       if (!user) {
-        throw new Error('User not found!')
+        throw new Error("User not found!");
       }
 
       if (admin) {

@@ -1,15 +1,15 @@
-import { Exclude } from 'class-transformer';
-import { v4 as uuid } from 'uuid';
+import { Exclude } from "class-transformer";
+import { v4 as uuid } from "uuid";
 
 import {
-  Entity,
   Column,
-  PrimaryColumn,
   CreateDateColumn,
+  Entity,
+  PrimaryColumn,
   UpdateDateColumn,
-} from 'typeorm';
+} from "typeorm";
 
-@Entity('users')
+@Entity("users")
 class Users {
   @PrimaryColumn()
   readonly id: string;
@@ -20,7 +20,7 @@ class Users {
   @Exclude()
   @Column()
   password: string;
-  
+
   @Column()
   admin: boolean;
 

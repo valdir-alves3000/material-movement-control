@@ -1,4 +1,5 @@
-export { ListProductsController } from './ListProductsController';
-export { UpdateProductsController } from './UpdateProductsController';
-export { DeleteProductsController } from './DeleteProductsController';
-export { CreateProductsController } from './CreateProductsController';
+export { CreateProductsController } from "./CreateProductsController";
+export { DeleteProductsController } from "./DeleteProductsController";
+export { ExpirationDateController } from "./ExpirationDateContrller";
+export { ListProductsController } from "./ListProductsController";
+export { UpdateProductsController } from "./UpdateProductsController";

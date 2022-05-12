@@ -1,18 +1,17 @@
-import { Exclude } from 'class-transformer';
-import { v4 as uuid } from 'uuid';
-import { Users } from './Users';
-
+import { Exclude } from "class-transformer";
 import {
-  Entity,
   Column,
-  OneToOne,
-  JoinColumn,
-  PrimaryColumn,
   CreateDateColumn,
-  UpdateDateColumn
-} from 'typeorm';
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryColumn,
+  UpdateDateColumn,
+} from "typeorm";
+import { v4 as uuid } from "uuid";
+import { Users } from "./Users";
 
-@Entity('products')
+@Entity("products")
 class Products {
   @PrimaryColumn()
   readonly id: string;
@@ -39,7 +38,7 @@ class Products {
   @Column()
   created_by_user: string;
 
-  @JoinColumn({ name: 'created_by_user' })
+  @JoinColumn({ name: "created_by_user" })
   @OneToOne(() => Users)
   createdByUser: Users[];
 
@@ -47,9 +46,15 @@ class Products {
   @Column()
   updated_by_user: string;
 
-  @JoinColumn({ name: 'updated_by_user' })
+  @JoinColumn({ name: "updated_by_user" })
   @OneToOne(() => Users)
   updatedByUser: Users[];
+
+  @CreateDateColumn()
+  expiration_date: Date;
+
+  @CreateDateColumn()
+  expiry_date_after_opening: string;
 
   @Exclude()
   @CreateDateColumn()

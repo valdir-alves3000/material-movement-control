@@ -1,5 +1,5 @@
-import { getCustomRepository } from 'typeorm';
-import { ProductsRepository } from '../../repositories';
+import { getCustomRepository } from "typeorm";
+import { ProductsRepository } from "../../repositories";
 
 class ListProductsService {
   async execute(id: string) {
@@ -8,15 +8,15 @@ class ListProductsService {
     if (id) {
       const product = await productsRepository.findOne({
         where: {
+          id: id,
           locked: false,
-          material: id,
-          status: 'in stock'
+          status: "in stock",
         },
-        relations: ['updatedByUser']
+        relations: ["updatedByUser"],
       });
 
       if (!product) {
-        throw new Error('Product not Found')
+        throw new Error("Product not Found");
       }
 
       return product;
