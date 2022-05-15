@@ -9,6 +9,6 @@ module.exports = {
   entities: [`dist/entities/*.js`],
 
   cli: {
-    migrationsDir: "dist/database/migrations",
+    migrationsDir: "src/database/migrations",
   },
 };
